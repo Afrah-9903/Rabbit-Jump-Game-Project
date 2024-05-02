@@ -13,8 +13,12 @@
 ***
 
 ### ***Technologies Used***
- . use div
- . use a bit of JavaScript to adjust the jumping of the rabbit.
+ * styles
+ * bounce 
+ * jump
+ * flex
+ * position the rabbit
+ * Add EventListeners to buttons 
 ***
 
 ### ***Getting Started***
