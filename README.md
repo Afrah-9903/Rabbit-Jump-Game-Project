@@ -31,7 +31,7 @@ Rabbit Jumper Game
 ##### image header 1
 ![Smile](https://i.imgur.com/7l3fGDL.jpeg )
 
-##### image header 2  1)
+##### image header 2 
 ***![Smile]( https://i.imgur.com/RYn114q.jpeg)
 
 
