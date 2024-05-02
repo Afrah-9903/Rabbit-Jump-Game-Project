@@ -31,9 +31,9 @@ Rabbit Jumper Game
 ##### image header 1
 ![Smile](https://i.imgur.com/7l3fGDL.jpeg )
 
-##### image header 2
-![Scared](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.buntINTHFLyDODyMKXNYcgHaEK%26pid%3DApi&f=1)
-***
+##### image header 2  1)
+***![Smile]( https://i.imgur.com/RYn114q.jpeg)
+
 
 ### ***Future Updates***
 
@@ -45,7 +45,7 @@ Rabbit Jumper Game
 
 ### ***Credits***
 
-##### Funny Images: [DuckDuckGo Search](http://www.duckduckgo.com)
+#####  Images :- Rabbit Jumper Game
 
 ##### Markdown Guide: [ia.net](https://ia.net/writer/support/general/markdown-guide)
 
