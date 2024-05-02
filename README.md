@@ -1,4 +1,3 @@
-# project-1
 # Rabbit Jumper Game 
  
 ## Date: 2/5/2024
