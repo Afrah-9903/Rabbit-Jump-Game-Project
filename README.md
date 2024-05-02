@@ -1,6 +1,6 @@
 # project-1
-# Project Title
-Rabbit Jumper Game 
+# Rabbit Jumper Game 
+ 
 ## Date: 2/5/2024
 
 ### By: Afrah Mohammed
