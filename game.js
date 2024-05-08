@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let carrot = document.createElement("div")
     carrot.classList.add("carrot", "shoot")
     carrotContainers[0].apendChild(carrot)
+    const gridBoxes = document.querySelector
 
     setTimeout(() => {
       // remove the carrot after it's shot
