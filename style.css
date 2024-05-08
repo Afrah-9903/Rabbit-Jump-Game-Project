@@ -5,7 +5,7 @@
 body {
   height: 100vh;
   text-align: center;
-  background-color: rgb(202, 161, 71);
+  background-color: rgb(223, 167, 167);
 }
 .container {
   display: grid;
@@ -17,7 +17,7 @@ body {
 .gridContainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
+  gap: 30px;
   align-items: end;
 }
 
@@ -87,6 +87,57 @@ body {
   bottom: 50px;
 }
 
+.carrotContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.carrot {
+  /* uses linear gradient that resembles a carrot. */
+
+  width: 30px;
+  height: 100px;
+  background: linear-gradient(to top, #d35400 0%, #e67e22 85%);
+  border-radius: 10px;
+  position: relative;
+  overflow: visible;
+}
+.leaves {
+  /* each leaf is created using a css triangle */
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.leaf {
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+.leaf:nth-child(1) {
+  border-width: 0 10px 20px 10px;
+  border-color: transparent transparent #2ecc71 transparent;
+  position: absolute;
+  top: 0;
+}
+.leaf:nth-child(2) {
+  border-width: 0 10px 20px 10px;
+  border-color: transparent transparent #27ae60 transparent;
+  position: absolute;
+  top: 0;
+  left: -12px;
+  transform: rotate(-20deg);
+}
+.leaf:nth-child(3) {
+  border-width: 0 8px 18px 8px;
+  border-color: transparent transparent #27ae60 transparent;
+  position: absolute;
+  top: 0;
+  left: 12px;
+  transform: rotate(20deg);
+}
+
 @keyframes jump-animation {
   0% {
     transform: translateY(0);
@@ -97,11 +148,6 @@ body {
   100% {
     transform: translateY(0);
   }
-}
-.carrot {
-  width: 30px;
-  height: 30px;
-  position: absolute;
 }
 
 .jump {

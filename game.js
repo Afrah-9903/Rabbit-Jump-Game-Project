@@ -5,6 +5,8 @@ let jump = document.getElementById("jump")
 
 document.addEventListener("DOMContentLoaded", function () {
   let character = document.getElementById("character")
+  let carrots = document.querySelectorAll(".carrot")
+  let score = 0
   function triggerjump() {
     character.classList.add("jump")
     setTimeout(() => {
