@@ -17,7 +17,7 @@ body {
 .gridContainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 15px;
   align-items: end;
 }
 
@@ -98,6 +98,12 @@ body {
     transform: translateY(0);
   }
 }
+.carrot {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+}
+
 .jump {
   animation: jump-animation 0.5s ease;
 }
