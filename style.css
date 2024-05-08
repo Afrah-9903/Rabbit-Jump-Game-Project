@@ -63,8 +63,8 @@ body {
 }
 #character {
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  align-items: end;
+  justify-content: flex-end;
 }
 
 .image {
@@ -103,6 +103,7 @@ body {
   position: relative;
   overflow: visible;
 }
+
 .leaves {
   /* each leaf is created using a css triangle */
   position: absolute;
@@ -137,8 +138,28 @@ body {
   left: 12px;
   transform: rotate(20deg);
 }
+.shoot {
+  animation: shoot-animation 1s forwards;
+}
+@keyframes shoot-animation {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100vh);
+  }
+}
 
 @keyframes jump-animation {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-100vh);
+  }
+}
+@keyframes moveCarrot {
   0% {
     transform: translateY(0);
   }
@@ -148,6 +169,9 @@ body {
   100% {
     transform: translateY(0);
   }
+}
+.carrot {
+  animation: moveCarrot 1s infinite alternaate;
 }
 
 .jump {
