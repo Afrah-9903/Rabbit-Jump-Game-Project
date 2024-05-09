@@ -1,179 +1,51 @@
-* {
-  margin: 0;
-  padding: 0;
-}
+/* style.css */
 body {
-  height: 100vh;
-  text-align: center;
-  background-color: rgb(223, 167, 167);
-}
-.container {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  height: 600px;
-  width: 800px;
+  background-color: #34495e;
+  color: #fff;
+  font-family: sans-serif;
 }
 
-.gridContainer {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  align-items: end;
-}
-
-.box {
-  /* display: grid; */
-  align-items: start;
-
-  height: 150px;
-  width: 150px;
-  font-size: 8rem;
-  background-color: red;
-  border-radius: 15%;
-  margin-left: 10px;
-  justify-content: center;
-  justify-self: end;
-}
-#box1 {
-  /* grid-column: 1/6;
-  grid-row: 1;
-  grid-area: I1; */
-
-  background-color: #a24156;
-}
-#box2 {
-  /* grid-column: 2/6;
-  grid-row: 1; */
-
-  background-color: #a955c7;
-}
-#box3 {
-  /* grid-column: 3/6;
-  grid-row: 1; */
-
-  background-color: #e2c462;
-}
-
-#game {
+.game {
   display: flex;
-  flex-direction: column;
-  position: relative;
+  flex-direction: column-reverse;
   justify-content: center;
   align-items: center;
-}
-#character {
-  display: flex;
-  align-items: end;
-  justify-content: flex-end;
+  height: 90vh;
+  position: relative; /* Add position relative to the game container */
 }
 
-.image {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  margin: 9px;
-  padding: 9px;
-  background-size: cover;
-  image-rendering: optimizeQuality;
-}
-
-.image img {
-  height: 300px;
-  width: 300px;
-  border-radius: 50%;
-}
-.image:hover {
-  top: 50px;
-  bottom: 50px;
-}
-
-.carrotContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-.carrot {
-  /* uses linear gradient that resembles a carrot. */
-
-  width: 30px;
-  height: 100px;
-  background: linear-gradient(to top, #d35400 0%, #e67e22 85%);
-  border-radius: 10px;
-  position: relative;
-  overflow: visible;
-}
-
-.leaves {
-  /* each leaf is created using a css triangle */
+.character {
+  width: 30vmin;
+  height: 30vmin;
   position: absolute;
-  top: -30px;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-}
-.leaf {
-  width: 0;
-  height: 0;
-  border-style: solid;
-}
-.leaf:nth-child(1) {
-  border-width: 0 10px 20px 10px;
-  border-color: transparent transparent #2ecc71 transparent;
-  position: absolute;
-  top: 0;
-}
-.leaf:nth-child(2) {
-  border-width: 0 10px 20px 10px;
-  border-color: transparent transparent #27ae60 transparent;
-  position: absolute;
-  top: 0;
-  left: -12px;
-  transform: rotate(-20deg);
-}
-.leaf:nth-child(3) {
-  border-width: 0 8px 18px 8px;
-  border-color: transparent transparent #27ae60 transparent;
-  position: absolute;
-  top: 0;
-  left: 12px;
-  transform: rotate(20deg);
-}
-.shoot {
-  animation: shoot-animation 1s forwards;
-}
-@keyframes shoot-animation {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-100vh);
-  }
+  background-image: url("https://banner2.cleanpng.com/20200218/ypk/transparent-cartoon-rabbit-rabbits-and-hares-nose-hare-clipart-bunny-tranparent-png-and-other-clipart-pic5e5dabecb32d00.8488713715831971647339.jpg");
+  background-size: cover;
 }
 
-@keyframes jump-animation {
-  0% {
-    transform: translateY(0);
-  }
-
-  100% {
-    transform: translateY(-100vh);
-  }
-}
-@keyframes moveCarrot {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
 .carrot {
-  animation: moveCarrot 1s infinite alternate;
+  width: 20vmin;
+  height: 20vmin;
+  background-color: orange; /* Set carrot color */
+  position: absolute;
+  border-radius: 50%;
+  top: 0; /* Adjust the top position */
+  left: 0;
 }
 
-.jump {
-  animation: jump-animation 0.5s ease;
+.obstacle {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.carrot {
+  background-color: orange; /* Adjusts carrot color */
+}
+
+.obstacle {
+  background-color: blue; /* Adjusts obstacle color */
 }

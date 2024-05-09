@@ -1,54 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> RabbitJumper Game</title>
-    <link rel="stylesheet" href="style.css"/>
-    <script src="game.js"></script>
-
+    <title>Rabbit Jumper Game</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <main>
+    <main class="game">
+        <div class="character" id="character"></div>
+          
+        
+        <div class="obstacles" id="obstacles"></div>
+        
       
-    <h1>Rabbit Jumper Game</h1>
-    <div class="rabbitContainer">
-      <div class ="image">
-        <div id="character" >
-          <div class="jump">
-            <img src=" https://t4.ftcdn.net/jpg/06/26/46/59/360_F_626465960_cYJig3mpu08rncIPOhBDCJNxHUrWfbjm.jpg">
-          </div>
-          </div>
+        <div class="carrots" id="carrots"></div>
+    </main>
 
-    <div class="container">
-      <div class="gridContainer">
-        <div class="box" id="box1">I1</div>
-          <div class="box"id="box2">I2</div>
-          <div class="box"id="box3">I3</div>
-      
-      </div>
-      
-      <div class ="carrotContainer">
-      <div class ="carrot">
-      <div class="leaves">
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-
-
-
-    
-      
-    
-  
-</main>
+    <script src="game.js"></script>
 </body>
 </html>
