@@ -29,8 +29,8 @@ body {
   transition: bottom 0.5s ease; /* Add smooth transition for character movement */
 }
 .carrot {
-  width: 20vmin;
-  height: 20vmin;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background-color: orange; /* Set carrot color */
   position: absolute;
@@ -40,8 +40,8 @@ body {
 }
 
 .obstacle {
-  width: 20vmin;
-  height: 20vmin;
+  width: 20px;
+  height: 20px;
   background-color: black; /* Set carrot color */
   position: absolute;
   border-radius: 50%;
@@ -64,19 +64,25 @@ body {
     opacity: 0; /* Fade out at the end of the animation */
   }
 }
-
-.bump {
-  animation: bumpAnimation 0.5s ease;
-}
-
+/* Bump animation */
 @keyframes bumpAnimation {
   0% {
-    transform: scale(1);
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-10px);
   }
   50% {
-    transform: scale(1.2);
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(-5px);
   }
   100% {
-    transform: scale(1);
+    transform: translateY(0);
   }
+}
+/* Apply bump animation when the character collides with obstacles */
+.character.bump {
+  animation: bumpAnimation 0.5s;
 }

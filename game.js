@@ -2,35 +2,87 @@ document.addEventListener("DOMContentLoaded", function () {
   let character = document.getElementById("character")
   let carrotsContainer = document.getElementById("carrots")
   let obstaclesContainer = document.getElementById("obstacles")
+  let scoreDisplay = document.getElementById("score")
+  let livesDisplay = document.getElementById("remaining-lives")
+  let carrotSound = document.getElementById("carrotSound")
+  let obstacleSound = document.getElementById("obstacleSound")
+  let newGameButton = document.getElementById("new-game-button")
 
   let score = 0
+  let lives = 3 // Number of lives
+  let initialLives = 3 // Initial number of lives
   let carrotsToWin = 20 // Number of carrots required to win
+  let obstacleSpeed = 2 // Initial speed of falling obstacles
+  let characterSize = 30 // Initial size of the character
+  let gameOverFlag = false // Flag to indicate whether the game is over
 
   // Function to generate carrots
   function generateCarrot() {
     let carrot = document.createElement("div")
     carrot.classList.add("carrot")
+    carrot.style.left = Math.random() * 80 + "vw" // Random horizontal position
+    carrot.style.animationDuration = Math.random() * 2 + 1 + "s" // Random animation duration
     carrotsContainer.appendChild(carrot)
   }
 
   // Generate multiple carrots
-  for (let i = 0; i < 20; i++) {
-    generateCarrot()
+  function generateCarrots() {
+    for (let i = 0; i < 20; i++) {
+      generateCarrot()
+    }
   }
 
   // Function to generate obstacles
   function generateObstacle() {
     let obstacle = document.createElement("div")
     obstacle.classList.add("obstacle")
+    obstacle.style.left = Math.random() * 80 + "vw" // Random horizontal position
+    obstacle.style.animationDuration = obstacleSpeed + "s" // Set animation duration
     obstaclesContainer.appendChild(obstacle)
   }
 
   // Generate multiple obstacles
-  for (let i = 0; i < 3; i++) {
-    generateObstacle()
+  function generateObstacles() {
+    for (let i = 0; i < 5; i++) {
+      generateObstacle()
+    }
   }
 
-  // Animation for moving character up
+  // Initialize the game
+  function initGame() {
+    score = 0
+    lives = initialLives // Reset lives to initial value
+    gameOverFlag = false
+    updateScore()
+    updateLives()
+    generateCarrots()
+    generateObstacles()
+    character.style.top = "50vh" // Initial vertical position
+    character.style.left = "10vw" // Initial horizontal position
+  }
+
+  // Event listener for arrow key presses
+  document.addEventListener("keydown", function (event) {
+    if (!gameOverFlag) {
+      if (event.key === "ArrowUp") {
+        moveCharacterUp()
+      } else if (event.key === "ArrowDown") {
+        moveCharacterDown()
+      } else if (event.key === "ArrowLeft") {
+        moveCharacterLeft()
+      } else if (event.key === "ArrowRight") {
+        moveCharacterRight()
+      }
+
+      checkCollision() // Check for collision after each move
+    }
+  })
+
+  // Event listener for the "New Game" button
+  newGameButton.addEventListener("click", function () {
+    initGame() // Start a new game
+  })
+
   // Function to move the character up
   function moveCharacterUp() {
     let characterTop = parseInt(window.getComputedStyle(character).top)
@@ -49,90 +101,70 @@ document.addEventListener("DOMContentLoaded", function () {
     character.style.left = characterLeft - 10 + "px" // Adjust speed as needed
   }
 
+  // Function to move the character right
   function moveCharacterRight() {
     let characterLeft = parseInt(window.getComputedStyle(character).left)
     character.style.left = characterLeft + 10 + "px" // Adjust speed as needed
   }
 
-  // Event listener for arrow key presses
-  document.addEventListener("keydown", function (event) {
-    if (event.key === "ArrowUp") {
-      moveCharacterUp()
-    } else if (event.key === "ArrowDown") {
-      moveCharacterDown()
-    } else if (event.key === "ArrowLeft") {
-      moveCharacterLeft()
-    } else if (event.key === "ArrowRight") {
-      moveCharacterRight()
-    }
-
-    checkCollision() // Check for collision after each move
-  })
-
-  // Function to check for collision between character and carrots
+  // Function to check for collision between character and carrots/obstacles
   function checkCollision() {
-    let carrots = document.querySelectorAll(".carrot")
-    carrots.forEach(function (carrot) {
-      if (isCollision(character, carrot)) {
-        carrot.classList.add("bump") // Apply bumping animation to the carrot
-        character.classList.add("bump") // Apply bumping animation to the character
+    if (!gameOverFlag) {
+      let carrots = document.querySelectorAll(".carrot")
+      carrots.forEach(function (carrot) {
+        if (isCollision(character, carrot)) {
+          carrot.remove()
+          score++
+          updateScore()
+        }
+      })
 
-        setTimeout(function () {
-          carrot.remove() // Remove the carrot after animation
-          score++ // Increase the score
-          updateScore() // Update the score display
-          character.classList.remove("bump") // Remove bumping animation from the character
-
-          // Check if the player wins
-          if (score >= carrotsToWin) {
-            showWinner()
+      let obstacles = document.querySelectorAll(".obstacle")
+      obstacles.forEach(function (obstacle) {
+        if (isCollision(character, obstacle)) {
+          obstacle.remove()
+          if (lives > 1) {
+            lives-- // Deduct a life if more than 1 life remaining
+            playLifeLostMessage() // Play life lost message
+          } else {
+            lives = 0 // If only 1 life remaining, set lives to 0
+            gameOver() // Trigger game over if no more lives
           }
-        }, 500) // Adjust duration as needed
-      }
-    })
-
-    let obstacles = document.querySelectorAll(".obstacle")
-    obstacles.forEach(function (obstacle) {
-      if (isCollision(character, obstacle)) {
-        // Handle collision with obstacle
-        gameOver() // Call game over function
-      }
-    })
+          updateLives() // Update remaining lives
+        }
+      })
+    }
   }
 
   // Function to handle game over
   function gameOver() {
+    gameOverFlag = true
     alert("Game Over! You lose!")
     // You can add more game over actions here such as resetting the game
   }
 
-  // Function to handle winning
-  function showWinner() {
-    // Play a victory sound
-    let audio = new Audio("victory.mp3")
-    audio.play()
-
-    // Display a special message
-    alert("Congratulations! You win!")
-
-    // Change background color to celebrate victory
-    document.body.style.backgroundColor = "#ffd700"
-  }
-
   // Function to update score
   function updateScore() {
-    document.getElementById("score").innerText = "Score: " + score
+    scoreDisplay.innerText = "Score: " + score
+    if (score >= carrotsToWin) {
+      showWinner()
+    }
+  }
+
+  // Function to update remaining lives
+  function updateLives() {
+    livesDisplay.innerText = lives
+  }
+
+  // Function to play life lost message
+  function playLifeLostMessage() {
+    alert("You lost a life!")
   }
 
   // Function to check collision between character and object
   function isCollision(char, obj) {
-    // Get the position and dimensions of the character
     const charRect = char.getBoundingClientRect()
-
-    // Get the position and dimensions of the object
     const objRect = obj.getBoundingClientRect()
-
-    // Check for collision using the bounding box approach
     return (
       charRect.top < objRect.bottom &&
       charRect.bottom > objRect.top &&
@@ -140,4 +172,13 @@ document.addEventListener("DOMContentLoaded", function () {
       charRect.right > objRect.left
     )
   }
+
+  // Function to handle winning
+  function showWinner() {
+    gameOverFlag = true
+    alert("Congratulations! You win!")
+  }
+
+  // Initialize the game when the page loads
+  initGame()
 })
