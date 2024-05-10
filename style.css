@@ -1,4 +1,5 @@
 /* style.css */
+
 body {
   background-color: #34495e;
   color: #fff;
@@ -21,31 +22,61 @@ body {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  background-image: url("https://banner2.cleanpng.com/20200218/ypk/transparent-cartoon-rabbit-rabbits-and-hares-nose-hare-clipart-bunny-tranparent-png-and-other-clipart-pic5e5dabecb32d00.8488713715831971647339.jpg");
+  background-image: url("https://banner2.cleanpng.com/20200218/ypk/transparent-cartoon-rabbit-rabbits-and-hares-nose-hare-clipart-bunny-tranparent-png-and-other-clipart-pic5e5dabecb32d00.8488713715831971647339.jpg"); /* Add path to character image */
   background-size: cover;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  transition: bottom 0.5s ease; /* Add smooth transition for character movement */
 }
-
 .carrot {
   width: 20vmin;
   height: 20vmin;
+  border-radius: 50%;
   background-color: orange; /* Set carrot color */
+  position: absolute;
+  top: 0; /* Adjust the top position */
+  left: 0;
+  animation: fall 3s linear infinite; /* Adjust animation duration for slower falling */
+}
+
+.obstacle {
+  width: 20vmin;
+  height: 20vmin;
+  background-color: black; /* Set carrot color */
   position: absolute;
   border-radius: 50%;
   top: 0; /* Adjust the top position */
   left: 0;
+  animation: fall 6s linear infinite; /* Adjust animation duration for slower falling */
+}
+@keyframes fall {
+  0% {
+    top: -20vmin; /* Start from above the screen */
+    opacity: 0; /* Start with no opacity */
+    transform: rotate(0deg); /* Start with no rotation */
+  }
+  50% {
+    opacity: 1; /* Increase opacity halfway through the animation */
+    transform: rotate(360deg); /* Rotate the element during the fall */
+  }
+  100% {
+    top: 100%; /* Fall down to the bottom of the screen */
+    opacity: 0; /* Fade out at the end of the animation */
+  }
 }
 
-.obstacle {
-  width: 30px;
-  height: 30px;
-  position: absolute;
-  border-radius: 50%;
+.bump {
+  animation: bumpAnimation 0.5s ease;
 }
 
-.carrot {
-  background-color: orange; /* Adjusts carrot color */
-}
-
-.obstacle {
-  background-color: blue; /* Adjusts obstacle color */
+@keyframes bumpAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
