@@ -5,9 +5,11 @@
 body {
   background-image: url("https://t3.ftcdn.net/jpg/06/06/79/70/360_F_606797008_rGPPk6bFWDQydnX7g7w1w9dVVZ4mD22J.jpg");
   background-repeat: no-repeat;
+  text-align: center;
+  color: white;
   background-size: cover;
-  justify-content: center;
-  align-content: center;
+
+  text-align: center;
 }
 div {
   display: flex;
